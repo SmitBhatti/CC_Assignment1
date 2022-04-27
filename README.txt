@@ -3,7 +3,7 @@ Make sure you are using the latest version of Python.
 To run the app:
 
 ```bash
-python main.py
+python app.py
 ```
 
 To view the app:
