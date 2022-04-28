@@ -5,14 +5,13 @@ from flask_login import LoginManager
 from flask_share import Share
 
 db = SQLAlchemy()
-DB_NAME = "database.db"
 
 share = Share()
 
 def create_app():
     application = app = Flask(__name__)
     app.config['SECRET_KEY'] = "RMIT"
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin:password@database-1.c6zd8f2bmusl.us-east-1.rds.amazonaws.com:3306/flaskdatabase'
     db.init_app(app)
 
     from .views import views
@@ -39,6 +38,4 @@ def create_app():
 
 
 def create_database(app):
-    if not path.exists("website/" + DB_NAME):
-        db.create_all(app=app)
-        print("Database creation successful!")
+     db.create_all(app=app)
