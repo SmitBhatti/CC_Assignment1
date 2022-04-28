@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
+{{ share.load() }}
 <h1 align="center">{% block header %}Recipes{% endblock %}</h1>
 <div id="posts">
   {% for post in posts %}
@@ -113,5 +114,8 @@
       Create a Post
     </button></a
   >
+  {% if posts %}
+  {{ share.create(title='Share with: ', sites='facebook, twitter, qq, wechat, weibo') }}
+  {% endif %}
 </div>
 {% endblock %} {% endblock %}
