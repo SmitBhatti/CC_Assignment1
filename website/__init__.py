@@ -7,6 +7,7 @@ from flask_share import Share
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
+share = Share()
 
 def create_app():
     app = Flask(__name__)
@@ -23,6 +24,8 @@ def create_app():
     from .models import User, Post, Comment, Like
 
     create_database(app)
+
+    share.init_app(app)
 
     login_manager = LoginManager()
     login_manager.login_view = "auth.login"
